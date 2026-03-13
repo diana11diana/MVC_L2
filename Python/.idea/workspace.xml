@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b312b02-ab15-4b08-a402-b625664fe3c1" name="Changes" comment="" />
+    <list default="true" id="4b312b02-ab15-4b08-a402-b625664fe3c1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/djangotutorial/polls/static/polls/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangotutorial/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/mysite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +37,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="3Aa6FCih7B8HTtSvXFqnKtfbdFj" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -31,13 +47,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.settings.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Lab2",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dianabrosko/MVC_L2/Python",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }

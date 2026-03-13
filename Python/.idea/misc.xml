@@ -3,7 +3,7 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.14 virtualenv at ~/MVC_L2/Python/.venv" />
   </component>
-  <component name="ProjectRootManager" version="2" default="true">
+  <component name="ProjectRootManager" version="2" default="true" project-jdk-name="Python 3.14 virtualenv at ~/MVC_L2/Python/.venv" project-jdk-type="Python SDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
