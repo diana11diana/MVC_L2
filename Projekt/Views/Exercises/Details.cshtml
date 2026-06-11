@@ -1,0 +1,61 @@
+@model Projekt.Models.Exercise
+
+@{
+    ViewData["Title"] = "Szczegóły ćwiczenia";
+}
+
+<div class="container py-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">📋 Szczegóły ćwiczenia</h2>
+        </div>
+
+        <div class="card-body">
+
+            <div class="mb-3">
+                <h5>Nazwa</h5>
+                <p>@Model.Name</p>
+            </div>
+
+            <div class="mb-3">
+                <h5>Kategoria</h5>
+                <p>@Model.Category</p>
+            </div>
+
+            <div class="mb-3">
+                <h5>Poziom trudności</h5>
+                <p>
+                    <span class="badge bg-primary">
+                        @Model.DifficultyLevel
+                    </span>
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <h5>Czas trwania</h5>
+                <p>@Model.Duration minut</p>
+            </div>
+
+            <div class="mb-3">
+                <h5>Opis</h5>
+                <p>@Model.Description</p>
+            </div>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-warning">
+                Edytuj
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Powrót
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,28 @@
+@model Projekt.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Panel administratora";
+}
+
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-dark text-white rounded shadow">
+        <h1 class="display-5 fw-bold">🛠 Panel administratora</h1>
+        <p class="lead mb-0">Zarządzaj użytkownikami, ćwiczeniami i aktywnością w systemie.</p>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-3"><div class="card text-center shadow h-100"><div class="card-body"><h1>👥</h1><h2>@Model.UsersCount</h2><h5>Użytkownicy</h5></div></div></div>
+        <div class="col-md-3"><div class="card text-center shadow h-100"><div class="card-body"><h1>💪</h1><h2>@Model.ExercisesCount</h2><h5>Ćwiczenia</h5></div></div></div>
+        <div class="col-md-3"><div class="card text-center shadow h-100"><div class="card-body"><h1>⭐</h1><h2>@Model.UserExercisesCount</h2><h5>Dodane do planów</h5></div></div></div>
+        <div class="col-md-3"><div class="card text-center shadow h-100"><div class="card-body"><h1>✅</h1><h2>@Model.CompletedExercisesCount</h2><h5>Wykonane</h5></div></div></div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <h3 class="mb-3">Szybkie akcje</h3>
+            <a asp-controller="Exercises" asp-action="Index" class="btn btn-success m-2">💪 Zarządzaj ćwiczeniami</a>
+            <a asp-controller="Exercises" asp-action="Create" class="btn btn-primary m-2">➕ Dodaj ćwiczenie</a>
+            <a asp-controller="Admin" asp-action="Users" class="btn btn-dark m-2">👥 Użytkownicy</a>
+        </div>
+    </div>
+</div>

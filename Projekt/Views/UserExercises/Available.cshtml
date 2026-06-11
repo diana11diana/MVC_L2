@@ -1,0 +1,170 @@
+@model IEnumerable<Projekt.Models.Exercise>
+
+@{
+    ViewData["Title"] = "Dostępne ćwiczenia";
+
+    var activeExerciseIds = ViewBag.ActiveExerciseIds as List<int> ?? new List<int>();
+    string? currentDifficulty = ViewBag.CurrentDifficulty;
+    string? currentCategory = ViewBag.CurrentCategory;
+}
+
+<div class="page-header mb-4">
+    <h1 class="display-5 fw-bold">Dostępne ćwiczenia</h1>
+    <p class="text-muted">Wybierz ćwiczenia i dodaj je do swojego planu.</p>
+</div>
+
+<form method="get" class="card shadow-sm p-4 mb-4">
+
+    <div class="row g-3 align-items-end">
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Poziom trudności</label>
+            <select name="difficulty" class="form-select">
+                <option value="">Wszystkie</option>
+
+                @if (currentDifficulty == "Łatwy")
+                {
+                    <option value="Łatwy" selected>Łatwy</option>
+                }
+                else
+                {
+                    <option value="Łatwy">Łatwy</option>
+                }
+
+                @if (currentDifficulty == "Średni")
+                {
+                    <option value="Średni" selected>Średni</option>
+                }
+                else
+                {
+                    <option value="Średni">Średni</option>
+                }
+
+                @if (currentDifficulty == "Trudny")
+                {
+                    <option value="Trudny" selected>Trudny</option>
+                }
+                else
+                {
+                    <option value="Trudny">Trudny</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-bold">Kategoria</label>
+            <select name="category" class="form-select">
+                <option value="">Wszystkie</option>
+
+                @{
+                    var categories = new[]
+                    {
+                        "Siłowe",
+                        "Cardio",
+                        "Mobilność",
+                        "Core",
+                        "Nogi",
+                        "Ramiona",
+                        "Plecy",
+                        "Brzuch",
+                        "Rozciąganie",
+                        "Relaksacyjne"
+                    };
+                }
+
+                @foreach (var cat in categories)
+                {
+                    if (currentCategory == cat)
+                    {
+                        <option value="@cat" selected>@cat</option>
+                    }
+                    else
+                    {
+                        <option value="@cat">@cat</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4 d-flex gap-2">
+            <button type="submit" class="btn btn-primary w-100">
+                🔍 Filtruj
+            </button>
+
+            <a asp-action="Available" class="btn btn-secondary w-100">
+                Wyczyść
+            </a>
+        </div>
+
+    </div>
+
+</form>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Brak ćwiczeń spełniających wybrane filtry.
+    </div>
+}
+else
+{
+    <div class="row g-4">
+
+        @foreach (var item in Model)
+        {
+            var alreadyAdded = activeExerciseIds.Contains(item.Id);
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+
+                        <h4 class="fw-bold">@item.Name</h4>
+
+                        <p class="text-muted mb-2">
+                            @item.Category
+                        </p>
+
+                        <p>
+                            <strong>Poziom:</strong>
+                            @item.DifficultyLevel
+                        </p>
+
+                        <p>
+                            <strong>Czas:</strong>
+                            @item.Duration min
+                        </p>
+
+                        <p>
+                            @item.Description
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer bg-white">
+
+                        @if (alreadyAdded)
+                        {
+                            <button class="btn btn-secondary w-100" disabled>
+                                Już dodano
+                            </button>
+                        }
+                        else
+                        {
+                            <form asp-action="Add" method="post">
+                                <input type="hidden" name="exerciseId" value="@item.Id" />
+
+                                <button type="submit" class="btn btn-success w-100">
+                                    ➕ Dodaj do moich ćwiczeń
+                                </button>
+                            </form>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+}

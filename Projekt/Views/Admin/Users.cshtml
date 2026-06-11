@@ -1,0 +1,78 @@
+@model IEnumerable<Projekt.Models.AdminUserViewModel>
+
+@{
+    ViewData["Title"] = "Użytkownicy";
+}
+
+
+
+<div class="hero-section mb-5">
+    <h1 class="display-5 fw-bold">Panel administratora</h1>
+    <p class="lead">
+        Lista zarejestrowanych użytkowników oraz podstawowe informacje o aktywności.
+    </p>
+</div>
+
+<form asp-action="Users" method="get" class="card shadow-sm p-3 mb-4">
+    <div class="row g-3 align-items-end">
+        <div class="col-md-9">
+            <label class="form-label fw-bold">Wyszukaj użytkownika</label>
+            <input type="text"
+                   name="searchString"
+                   value="@ViewData["CurrentFilter"]"
+                   class="form-control"
+                   placeholder="Wpisz email albo imię i nazwisko" />
+        </div>
+
+        <div class="col-md-3 d-flex gap-2">
+            <button type="submit" class="btn btn-primary w-100">
+                🔍 Szukaj
+            </button>
+
+            <a asp-action="Users" class="btn btn-secondary w-100">
+                Wyczyść
+            </a>
+        </div>
+    </div>
+</form>
+
+<div class="card p-4">
+    <h3 class="fw-bold mb-4">👥 Użytkownicy systemu</h3>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Imię i nazwisko</th>
+            <th>Rola</th>
+            <th>Rejestracja</th>
+            <th>Ostatnie logowanie</th>
+            <th>Ostatnie wylogowanie</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@(user.FullName ?? "-")</td>
+                <td>
+                    <span class="badge bg-primary">@user.Roles</span>
+                </td>
+                <td>@user.RegisteredAt.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    @(user.LastLoginAt.HasValue
+                        ? user.LastLoginAt.Value.ToString("yyyy-MM-dd HH:mm")
+                        : "Brak danych")
+                </td>
+                <td>
+                    @(user.LastLogoutAt.HasValue
+                        ? user.LastLogoutAt.Value.ToString("yyyy-MM-dd HH:mm")
+                        : "Brak danych")
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

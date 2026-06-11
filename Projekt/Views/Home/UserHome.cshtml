@@ -1,0 +1,372 @@
+@model Projekt.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Panel użytkownika";
+
+    var completed = Model.CompletedExercisesCount;
+    var total = Model.UserExercisesCount;
+    var percent = total > 0 ? (completed * 100 / total) : 0;
+    var remaining = total - completed;
+}
+
+<div class="container py-4">
+
+    <div class="user-hero mb-4">
+        <div>
+            <h1>👋 Mój panel treningowy</h1>
+            <p>Sprawdź postępy, zaplanuj trening i dobierz ćwiczenia na dzisiaj.</p>
+
+            <button type="button"
+                    class="btn btn-light btn-lg mt-3"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ankietaModal">
+                📝 Wypełnij ankietę dnia
+            </button>
+        </div>
+
+        <div class="hero-badge">
+            <div class="hero-number">@percent%</div>
+            <div>ukończonego planu</div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <div class="card-icon">🏋️</div>
+                <div class="card-title">Wszystkie ćwiczenia</div>
+                <div class="card-number">@Model.ExercisesCount</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <div class="card-icon">📋</div>
+                <div class="card-title">Moje ćwiczenia</div>
+                <div class="card-number">@Model.UserExercisesCount</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <div class="card-icon">✅</div>
+                <div class="card-title">Wykonane</div>
+                <div class="card-number">@Model.CompletedExercisesCount</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <div class="card-icon">⏳</div>
+                <div class="card-title">Do wykonania</div>
+                <div class="card-number">@remaining</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+            <div class="progress-card">
+                <h4>📈 Postęp planu</h4>
+
+                <div class="circle-progress"
+                     style="background: conic-gradient(#16a34a @percent%, #e5e7eb 0);">
+                    <div class="circle-inner">
+                        <strong>@percent%</strong>
+                        <span>gotowe</span>
+                    </div>
+                </div>
+
+                <p class="text-muted mt-3 text-center">
+                    Wykonano @completed z @total dodanych ćwiczeń.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="info-card">
+                <h4>🔥 Dzisiejsza motywacja</h4>
+                <p>
+                    Nawet krótki trening jest lepszy niż brak treningu.
+                    Wybierz ćwiczenie i zrób mały krok do przodu.
+                </p>
+
+                <div class="mini-box">
+                    💡 Regularność jest ważniejsza niż perfekcja.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="info-card">
+                <h4>⚡ Szybkie akcje</h4>
+
+                <a asp-controller="UserExercises"
+                   asp-action="Available"
+                   class="btn btn-primary w-100 mb-3">
+                    📚 Dostępne ćwiczenia
+                </a>
+
+                <a asp-controller="UserExercises"
+                   asp-action="MyExercises"
+                   class="btn btn-success w-100 mb-3">
+                    ✅ Moje ćwiczenia
+                </a>
+
+                <button type="button"
+                        class="btn btn-outline-dark w-100"
+                        data-bs-toggle="modal"
+                        data-bs-target="#ankietaModal">
+                    📝 Ankieta dnia
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="ankietaModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">📝 Ankieta treningowa dnia</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Jak się dziś czujesz?</label>
+                    <select id="mood" class="form-select">
+                        <option value="energetyczny">Energetyczny</option>
+                        <option value="slaby">Słaby</option>
+                        <option value="zmeczony">Zmęczony</option>
+                        <option value="senny">Senny</option>
+                        <option value="produktywny">Produktywny</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Jaką kategorię wybierasz?</label>
+                    <select id="trainingType" class="form-select">
+                        <option value="">Wszystkie</option>
+                        <option value="Siłowe">Siłowe</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Mobilność">Mobilność</option>
+                        <option value="Core">Core</option>
+                        <option value="Nogi">Nogi</option>
+                        <option value="Ramiona">Ramiona</option>
+                        <option value="Plecy">Plecy</option>
+                        <option value="Brzuch">Brzuch</option>
+                        <option value="Rozciąganie">Rozciąganie</option>
+                        <option value="Relaksacyjne">Relaksacyjne</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Jaki poziom wybierasz?</label>
+                    <select id="level" class="form-select">
+                        <option value="Łatwy">Łatwy</option>
+                        <option value="Średni">Średni</option>
+                        <option value="Trudny">Trudny</option>
+                    </select>
+                </div>
+
+                <div id="resultBox" class="alert alert-info d-none mt-4"></div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Zamknij
+                </button>
+
+                <button type="button" class="btn btn-primary" onclick="analyzeSurvey()">
+                    🔍 Dobierz ćwiczenia
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function analyzeSurvey() {
+        const mood = document.getElementById("mood").value;
+        let category = document.getElementById("trainingType").value;
+        let difficulty = document.getElementById("level").value;
+
+        if (mood === "slaby" || mood === "zmeczony" || mood === "senny") {
+            difficulty = "Łatwy";
+
+            if (category === "" || category === "Siłowe" || category === "Cardio") {
+                category = "Mobilność";
+            }
+        }
+
+        if (mood === "energetyczny" || mood === "produktywny") {
+            if (difficulty !== "Łatwy") {
+                difficulty = "Trudny";
+            }
+
+            if (category === "") {
+                category = "Siłowe";
+            }
+        }
+
+        if (category === "") {
+            category = "Mobilność";
+        }
+
+        const resultBox = document.getElementById("resultBox");
+
+        resultBox.classList.remove("d-none");
+        resultBox.innerHTML =
+            "<strong>Rekomendacja na dziś:</strong><br>" +
+            "Kategoria: <strong>" + category + "</strong><br>" +
+            "Poziom: <strong>" + difficulty + "</strong><br><br>" +
+            "Za chwilę zobaczysz pasujące ćwiczenia.";
+
+        setTimeout(function () {
+            window.location.href =
+                "/UserExercises/Available?difficulty=" +
+                encodeURIComponent(difficulty) +
+                "&category=" +
+                encodeURIComponent(category);
+        }, 800);
+    }
+</script>
+
+<style>
+    .user-hero {
+        background: linear-gradient(135deg, #2563eb, #14b8a6);
+        color: white;
+        border-radius: 26px;
+        padding: 48px;
+        box-shadow: 0 20px 45px rgba(37, 99, 235, 0.25);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .user-hero h1 {
+        font-size: 46px;
+        font-weight: 800;
+    }
+
+    .user-hero p {
+        font-size: 19px;
+        opacity: .95;
+    }
+
+    .hero-badge {
+        background: rgba(255,255,255,.18);
+        border: 1px solid rgba(255,255,255,.35);
+        border-radius: 24px;
+        padding: 28px;
+        text-align: center;
+        min-width: 190px;
+        backdrop-filter: blur(10px);
+    }
+
+    .hero-number {
+        font-size: 46px;
+        font-weight: 800;
+    }
+
+    .dashboard-card,
+    .progress-card,
+    .info-card {
+        background: white;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.10);
+        height: 100%;
+        border: 1px solid rgba(226, 232, 240, .9);
+    }
+
+    .dashboard-card {
+        text-align: center;
+        transition: .2s;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 22px 45px rgba(15, 23, 42, 0.16);
+    }
+
+    .card-icon {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .card-title {
+        color: #64748b;
+        font-weight: 700;
+    }
+
+    .card-number {
+        font-size: 38px;
+        font-weight: 800;
+        color: #0f172a;
+    }
+
+    .circle-progress {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        margin: 28px auto 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .circle-inner {
+        width: 135px;
+        height: 135px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: inset 0 0 18px rgba(0,0,0,.08);
+    }
+
+    .circle-inner strong {
+        font-size: 34px;
+        color: #16a34a;
+    }
+
+    .circle-inner span {
+        color: #64748b;
+        font-weight: 600;
+    }
+
+    .mini-box {
+        margin-top: 20px;
+        background: #ecfeff;
+        border-left: 5px solid #14b8a6;
+        padding: 16px;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+
+    @@media (max-width: 768px) {
+        .user-hero {
+            flex-direction: column;
+            text-align: center;
+            padding: 34px;
+        }
+
+        .user-hero h1 {
+            font-size: 34px;
+        }
+    }
+</style>

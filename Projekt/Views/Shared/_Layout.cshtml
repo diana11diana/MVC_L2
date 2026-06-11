@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Menedżer Treningów Fitness</title>
+
+    <script type="importmap"></script>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Projekt.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+<header class="app-header">
+    <nav class="navbar navbar-expand-lg app-navbar">
+        <div class="container-fluid px-4">
+
+            <a class="navbar-brand app-brand"
+               asp-controller="Home"
+               asp-action="Index">
+                <span class="brand-icon">🏋️</span>
+                <span>Menedżer Treningów Fitness</span>
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav me-auto">
+
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                    🏠 Panel administratora
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Exercises" asp-action="Index">
+                                    💪 Zarządzaj ćwiczeniami
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Admin" asp-action="Users">
+                                    👥 Użytkownicy
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                    🏠 Moja strona
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="UserExercises" asp-action="Available">
+                                    📚 Dostępne ćwiczenia
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="UserExercises" asp-action="MyExercises">
+                                    ✅ Moje ćwiczenia
+                                </a>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                🏠 Strona główna
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+
+                <partial name="_LoginPartial" />
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="app-wrapper">
+    <main class="container pb-5">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="app-footer">
+    <div class="container d-flex justify-content-between">
+        <span>© 2026 - Menedżer Treningów Fitness</span>
+        <span>ASP.NET Core MVC • EF Core • SQLite</span>
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

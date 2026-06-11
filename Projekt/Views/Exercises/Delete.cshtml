@@ -1,0 +1,44 @@
+@model Projekt.Models.Exercise
+
+@{
+    ViewData["Title"] = "Usuń ćwiczenie";
+}
+
+<div class="container py-4">
+    <div class="card shadow border-danger">
+        <div class="card-header bg-danger text-white">
+            <h2 class="mb-0">🗑️ Usuń ćwiczenie</h2>
+        </div>
+
+        <div class="card-body">
+            <div class="alert alert-warning">
+                <strong>Czy na pewno chcesz usunąć to ćwiczenie?</strong>
+            </div>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th width="220">Nazwa</th>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <th>Kategoria</th>
+                    <td>@Model.Category</td>
+                </tr>
+                <tr>
+                    <th>Czas trwania</th>
+                    <td>@Model.Duration min</td>
+                </tr>
+                <tr>
+                    <th>Opis</th>
+                    <td>@Model.Description</td>
+                </tr>
+            </table>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger">🗑️ Usuń</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">↩ Anuluj</a>
+            </form>
+        </div>
+    </div>
+</div>

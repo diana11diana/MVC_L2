@@ -1,0 +1,85 @@
+@model Projekt.Models.Exercise
+
+@{
+    ViewData["Title"] = "Dodaj ćwiczenie";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0">➕ Dodaj nowe ćwiczenie</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create" method="post">
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold">Nazwa ćwiczenia</label>
+                    <input asp-for="Name" class="form-control" placeholder="np. Przysiady" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Category" class="form-label fw-bold">Kategoria</label>
+                    <select asp-for="Category" class="form-select">
+                        <option value="Siłowe">Siłowe</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Mobilność">Mobilność</option>
+                        <option value="Core">Core</option>
+                        <option value="Nogi">Nogi</option>
+                        <option value="Ramiona">Ramiona</option>
+                        <option value="Plecy">Plecy</option>
+                        <option value="Brzuch">Brzuch</option>
+                        <option value="Rozciąganie">Rozciąganie</option>
+                        <option value="Relaksacyjne">Relaksacyjne</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DifficultyLevel" class="form-label fw-bold">Poziom trudności</label>
+                    <select asp-for="DifficultyLevel" class="form-select">
+                        <option value="Łatwy">Łatwy</option>
+                        <option value="Średni">Średni</option>
+                        <option value="Trudny">Trudny</option>
+                    </select>
+                    <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Duration" class="form-label fw-bold">Czas trwania w minutach</label>
+                    <input asp-for="Duration" class="form-control" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Description" class="form-label fw-bold">Opis</label>
+                    <textarea asp-for="Description" class="form-control" rows="5"
+                              placeholder="Krótki opis ćwiczenia"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    💾 Zapisz
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary ms-2">
+                    ↩ Powrót
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

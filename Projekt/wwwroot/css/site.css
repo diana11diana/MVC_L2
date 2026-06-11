@@ -1,0 +1,200 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    min-height: 100vh;
+    margin-bottom: 80px;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(20, 184, 166, 0.12), transparent 30%),
+        #f4f7fb;
+    color: #1f2937;
+}
+
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.app-navbar {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+}
+
+.app-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    color: #0f172a !important;
+}
+
+.brand-icon {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #14b8a6);
+    color: white;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+.app-menu {
+    margin-left: 24px;
+    gap: 6px;
+}
+
+.app-menu .nav-link {
+    color: #334155 !important;
+    font-weight: 600;
+    border-radius: 14px;
+    padding: 10px 14px;
+    transition: 0.2s;
+}
+
+.app-menu .nav-link:hover {
+    background: #e0f2fe;
+    color: #0369a1 !important;
+}
+
+.app-wrapper {
+    padding-top: 34px;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #2563eb, #14b8a6);
+    color: white;
+    border-radius: 32px;
+    padding: 58px;
+    box-shadow: 0 24px 55px rgba(37, 99, 235, 0.25);
+    overflow: hidden;
+}
+
+.hero-icon {
+    font-size: 8rem;
+    filter: drop-shadow(0 16px 25px rgba(15, 23, 42, 0.25));
+}
+
+.stat-card,
+.feature-card,
+.card {
+    background: white;
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+.stat-card {
+    padding: 28px;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.stat-card:hover,
+.feature-card:hover {
+    transform: translateY(-6px);
+}
+
+.stat-icon {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #64748b;
+    font-weight: 700;
+}
+
+.stat-value {
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: #2563eb;
+}
+
+.feature-card {
+    padding: 30px;
+    height: 100%;
+    transition: 0.25s;
+}
+
+.table {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+.table thead {
+    background: #eff6ff;
+}
+
+.table th {
+    color: #334155;
+    font-weight: 800;
+    border-bottom: none;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.btn {
+    border-radius: 14px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb, #14b8a6);
+    border: none;
+}
+
+.btn-primary:hover {
+    opacity: 0.92;
+}
+
+.form-control,
+.form-select {
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+.app-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 18px 0;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+.app-footer .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.footer-tech {
+    font-weight: 600;
+}
+

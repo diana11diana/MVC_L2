@@ -1,0 +1,135 @@
+@{
+    ViewData["Title"] = "Panel administratora";
+}
+
+<div class="container mt-4">
+
+    <div class="p-5 mb-4 bg-primary text-white rounded shadow">
+
+        <h1 class="display-4">
+            👨‍💼 Panel administratora
+        </h1>
+
+        <p class="lead">
+            Zarządzaj użytkownikami oraz całym systemem treningowym.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow h-100">
+
+                <div class="card-body">
+
+                    <h1>👥</h1>
+
+                    <h2>@ViewBag.UsersCount</h2>
+
+                    <h5>Użytkownicy</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow h-100">
+
+                <div class="card-body">
+
+                    <h1>🏋️</h1>
+
+                    <h2>@ViewBag.ExercisesCount</h2>
+
+                    <h5>Ćwiczenia</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow h-100">
+
+                <div class="card-body">
+
+                    <h1>⭐</h1>
+
+                    <h2>@ViewBag.UserExercisesCount</h2>
+
+                    <h5>Dodane</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow h-100">
+
+                <div class="card-body">
+
+                    <h1>✅</h1>
+
+                    <h2>@ViewBag.CompletedExercisesCount</h2>
+
+                    <h5>Wykonane</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h3>
+                Szybkie akcje
+            </h3>
+
+            <hr />
+
+            <a asp-controller="Admin"
+               asp-action="Users"
+               class="btn btn-primary m-2">
+
+                👥 Lista użytkowników
+
+            </a>
+
+            <a asp-controller="Exercises"
+               asp-action="Index"
+               class="btn btn-success m-2">
+
+                💪 Zarządzaj ćwiczeniami
+
+            </a>
+
+            <a asp-controller="WorkoutSessions"
+               asp-action="Index"
+               class="btn btn-warning m-2">
+
+                📅 Sesje treningowe
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

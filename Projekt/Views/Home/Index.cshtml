@@ -1,0 +1,60 @@
+﻿@model Projekt.Models.DashboardViewModel
+
+
+<div class="text-center mb-5">
+
+    <h1 class="display-3 fw-bold">
+        Fitness Training Manager
+    </h1>
+
+    <p class="lead">
+        Manage exercises, track workout sessions and monitor progress.
+    </p>
+
+    <a asp-controller="Exercises"
+       asp-action="Index"
+       class="btn btn-primary btn-lg">
+        View Exercises
+    </a>
+
+</div>
+
+<div class="row text-center">
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-body">
+                <h5>Exercises</h5>
+                <h1>@Model.TotalExercises</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-body">
+                <h5>Workout Sessions</h5>
+                <h1>@Model.TotalSessions</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-body">
+                <h5>Calories Burned</h5>
+                <h1>@Model.TotalCalories</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-body">
+                <h5>Avg. Duration</h5>
+                <h1>@Model.AverageDuration min</h1>
+            </div>
+        </div>
+    </div>
+
+</div>

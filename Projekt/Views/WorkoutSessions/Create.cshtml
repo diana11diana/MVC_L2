@@ -1,0 +1,36 @@
+@model Projekt.Models.WorkoutSession
+
+@{
+    ViewData["Title"] = "Dodaj sesję treningową";
+}
+
+<div class="container py-4">
+    <div class="card shadow border-0">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">📅 Dodaj sesję treningową</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="Date" class="form-label fw-bold">Data</label>
+                    <input asp-for="Date" type="date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ExerciseId" class="form-label fw-bold">Ćwiczenie</label>
+                    <select asp-for="ExerciseId" class="form-select" asp-items="ViewBag.ExerciseId"></select>
+                    <span asp-validation-for="ExerciseId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CaloriesBurned" class="form-label fw-bold">Spalone kalorie</label>
+                    <input asp-for="CaloriesBurned" class="form-control" />
+                    <span asp-validation-for="CaloriesBurned" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">💾 Zapisz</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">↩ Powrót</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts { @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); } }

@@ -1,0 +1,15 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Błąd";
+}
+
+<div class="container py-5">
+    <div class="alert alert-danger shadow">
+        <h1 class="text-danger">Wystąpił błąd</h1>
+        <p>Podczas obsługi żądania wystąpił problem.</p>
+        @if (Model.ShowRequestId)
+        {
+            <p><strong>Identyfikator żądania:</strong> <code>@Model.RequestId</code></p>
+        }
+    </div>
+</div>

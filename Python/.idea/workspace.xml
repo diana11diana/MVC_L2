@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b312b02-ab15-4b08-a402-b625664fe3c1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/templates/polls/results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangotutorial/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangotutorial/polls/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dotNET/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dotNET/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../dotNET/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,0 +1,154 @@
+@model IEnumerable<Projekt.Models.UserExercise>
+
+@{
+    ViewData["Title"] = "Moje ćwiczenia";
+}
+
+<div class="page-header mb-4">
+    <h1 class="display-5 fw-bold">Moje ćwiczenia</h1>
+    <p class="text-muted">Tutaj znajdują się ćwiczenia dodane do Twojego planu.</p>
+</div>
+
+@{
+    string? currentStatus = ViewBag.CurrentStatus;
+}
+
+<div class="card shadow-sm p-3 mb-4">
+    <form method="get" class="row g-3 align-items-end">
+
+        <div class="col-md-8">
+            <label class="form-label fw-bold">Filtr statusu</label>
+            <select name="status" class="form-select">
+                @if (string.IsNullOrEmpty(currentStatus))
+                {
+                    <option value="" selected>Wszystkie</option>
+                }
+                else
+                {
+                    <option value="">Wszystkie</option>
+                }
+
+                @if (currentStatus == "completed")
+                {
+                    <option value="completed" selected>Wykonane</option>
+                }
+                else
+                {
+                    <option value="completed">Wykonane</option>
+                }
+
+                @if (currentStatus == "active")
+                {
+                    <option value="active" selected>Do wykonania</option>
+                }
+                else
+                {
+                    <option value="active">Do wykonania</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4 d-flex gap-2">
+            <button type="submit" class="btn btn-primary w-100">
+                🔍 Filtruj
+            </button>
+
+            <a asp-action="MyExercises" class="btn btn-secondary w-100">
+                Wyczyść
+            </a>
+        </div>
+
+    </form>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="card p-5 text-center shadow">
+        <div class="fs-1 mb-3">📭</div>
+
+        <h3>Nie masz jeszcze żadnych ćwiczeń</h3>
+
+        <p class="text-muted">
+            Przejdź do dostępnych ćwiczeń i dodaj pierwsze ćwiczenie do planu.
+        </p>
+
+        <a asp-action="Available" class="btn btn-primary">
+            Zobacz dostępne ćwiczenia
+        </a>
+    </div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm">
+
+                    <div class="fs-1 mb-3">
+                        @(item.IsCompleted ? "✅" : "⭕")
+                    </div>
+
+                    <h4 class="fw-bold">@item.Exercise?.Name</h4>
+
+                    <p class="text-muted">@item.Exercise?.Category</p>
+
+                    <p>
+                        ⏱️ @item.Exercise?.Duration min
+                    </p>
+
+                    <p>
+                        Status:
+                        @if (item.IsCompleted)
+                        {
+                            <span class="badge bg-success">
+                                Wykonano
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">
+                                Do wykonania
+                            </span>
+                        }
+                    </p>
+
+                    @if (item.IsCompleted)
+                    {
+                        <div class="alert alert-success mt-auto mb-0">
+                            ✅ Ćwiczenie zostało wykonane.
+
+                            @if (item.CompletedAt != null)
+                            {
+                                <br />
+                                <strong>Data potwierdzenia:</strong>
+                                @item.CompletedAt?.ToString("yyyy-MM-dd HH:mm")
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex gap-2 mt-auto">
+                            <form asp-action="Complete" method="post">
+                                <input type="hidden" name="id" value="@item.Id" />
+
+                                <button class="btn btn-success">
+                                    ✓ Wykonano
+                                </button>
+                            </form>
+
+                            <form asp-action="Remove" method="post">
+                                <input type="hidden" name="id" value="@item.Id" />
+
+                                <button class="btn btn-danger">
+                                    ✕ Usuń
+                                </button>
+                            </form>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        }
+    </div>
+}

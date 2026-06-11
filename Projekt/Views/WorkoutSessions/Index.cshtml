@@ -1,0 +1,32 @@
+@model IEnumerable<Projekt.Models.WorkoutSession>
+
+@{
+    ViewData["Title"] = "Sesje treningowe";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>📅 Sesje treningowe</h2>
+        <a asp-action="Create" class="btn btn-primary">➕ Dodaj sesję</a>
+    </div>
+
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-dark">
+        <tr>
+            <th>Data</th>
+            <th>Ćwiczenie</th>
+            <th>Spalone kalorie</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                <td>@item.Exercise?.Name</td>
+                <td>@item.CaloriesBurned kcal</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
