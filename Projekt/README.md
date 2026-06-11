@@ -1,60 +1,299 @@
 # Menedżer Treningów Fitness
 
-## Projekt zaliczeniowy – ASP.NET Core MVC
+## Projekt zaliczeniowy z wykorzystaniem wzorca MVC
 
 ---
 
 # Spis treści
 
 1. Opis projektu
-2. Zastosowane technologie
-3. Funkcjonalności aplikacji
-4. Role użytkowników
-5. Modele danych
-6. Instrukcja uruchomienia
+2. Cel projektu
+3. Zastosowane technologie
+4. Funkcjonalności aplikacji
+5. Role użytkowników
+6. Modele danych
 7. Struktura projektu
-8. Podsumowanie
+8. Instrukcja uruchomienia
+9. Podsumowanie
 
 ---
 
 # Opis projektu
 
-Menedżer Treningów Fitness jest aplikacją internetową stworzoną z wykorzystaniem wzorca architektonicznego **MVC (Model-View-Controller)**.
+**Menedżer Treningów Fitness** jest aplikacją internetową stworzoną w technologii **ASP.NET Core MVC**. Projekt umożliwia zarządzanie ćwiczeniami fitness, tworzenie własnych planów treningowych oraz monitorowanie postępów użytkowników.
 
-Celem projektu jest umożliwienie użytkownikom planowania własnych treningów, dodawania ćwiczeń do swojego planu oraz monitorowania postępów. Administrator posiada możliwość zarządzania bazą ćwiczeń oraz użytkownikami systemu.
+Aplikacja została zaprojektowana zgodnie z architekturą **Model-View-Controller (MVC)**, dzięki czemu logika biznesowa, dane oraz interfejs użytkownika są od siebie oddzielone.
 
-Projekt został wykonany w technologii **ASP.NET Core MVC** z wykorzystaniem **Entity Framework Core**, **SQLite** oraz systemu uwierzytelniania **ASP.NET Identity**.
+Projekt wykorzystuje bazę danych SQLite oraz system uwierzytelniania ASP.NET Identity.
+
+---
+
+# Cel projektu
+
+Celem projektu było stworzenie nowoczesnej aplikacji internetowej umożliwiającej:
+
+- zarządzanie bazą ćwiczeń,
+- tworzenie planów treningowych,
+- monitorowanie wykonanych ćwiczeń,
+- zarządzanie użytkownikami,
+- wykorzystanie systemu logowania oraz autoryzacji.
 
 ---
 
 # Zastosowane technologie
 
-Projekt został wykonany z użyciem:
+Projekt został wykonany z wykorzystaniem:
 
 - ASP.NET Core MVC
+- C#
 - Entity Framework Core
-- ASP.NET Identity
 - SQLite
+- ASP.NET Identity
 - Razor Views
 - Bootstrap 5
 - HTML5
 - CSS3
 - JavaScript
-- C#
 
 ---
 
 # Funkcjonalności aplikacji
 
-## Funkcje ogólne
+## Rejestracja i logowanie
 
-- rejestracja użytkownika,
+Aplikacja umożliwia:
+
+- rejestrację użytkownika,
 - logowanie,
 - wylogowanie,
-- podział na role Administrator oraz User,
-- nowoczesny interfejs graficzny,
-- responsywny wygląd aplikacji,
-- walidacja formularzy.
+- obsługę ról użytkowników.
+
+---
+
+## Panel administratora
+
+Administrator posiada możliwość:
+
+- przeglądania panelu administracyjnego,
+- zarządzania ćwiczeniami,
+- dodawania nowych ćwiczeń,
+- edycji ćwiczeń,
+- usuwania ćwiczeń,
+- przeglądania szczegółów ćwiczeń,
+- przeglądania listy użytkowników,
+- wyszukiwania użytkowników,
+- przeglądania statystyk systemu.
+
+---
+
+## Zarządzanie ćwiczeniami
+
+Każde ćwiczenie posiada:
+
+- nazwę,
+- kategorię,
+- poziom trudności,
+- czas trwania,
+- opis.
+
+Administrator może wykonywać pełny zestaw operacji CRUD:
+
+- Create,
+- Read,
+- Update,
+- Delete.
+
+---
+
+## Panel użytkownika
+
+Użytkownik może:
+
+- przeglądać swój panel,
+- dodawać ćwiczenia do planu,
+- oznaczać ćwiczenia jako wykonane,
+- usuwać niewykonane ćwiczenia,
+- ponownie dodawać wykonane ćwiczenia,
+- śledzić własne postępy.
+
+---
+
+## Filtrowanie ćwiczeń
+
+Dostępne ćwiczenia mogą być filtrowane według:
+
+### kategorii
+
+- Siłowe
+- Cardio
+- Mobilność
+- Core
+- Nogi
+- Ramiona
+- Plecy
+- Brzuch
+- Rozciąganie
+- Relaksacyjne
+
+### poziomu trudności
+
+- Łatwy
+- Średni
+- Trudny
+
+---
+
+## Ankieta treningowa
+
+Aplikacja zawiera ankietę pomagającą dobrać odpowiedni trening.
+
+Na podstawie odpowiedzi użytkownika system proponuje ćwiczenia zgodne z:
+
+- samopoczuciem,
+- preferowanym rodzajem treningu,
+- poziomem trudności.
+
+---
+
+## Statystyki
+
+Panel administratora prezentuje między innymi:
+
+- liczbę użytkowników,
+- liczbę ćwiczeń,
+- liczbę ćwiczeń dodanych do planów,
+- liczbę wykonanych ćwiczeń.
+
+---
+
+# Role użytkowników
+
+## Administrator
+
+Administrator może:
+
+- zarządzać ćwiczeniami,
+- zarządzać użytkownikami,
+- przeglądać statystyki,
+- edytować dane,
+- usuwać dane.
+
+---
+
+## Użytkownik
+
+Użytkownik może:
+
+- logować się do systemu,
+- przeglądać dostępne ćwiczenia,
+- filtrować ćwiczenia,
+- dodawać ćwiczenia do planu,
+- oznaczać ćwiczenia jako wykonane,
+- monitorować postępy,
+- korzystać z ankiety treningowej.
+
+---
+
+# Modele danych
+
+Projekt wykorzystuje między innymi następujące modele:
+
+## Exercise
+
+Model przechowujący informacje o ćwiczeniu:
+
+- Name
+- Category
+- DifficultyLevel
+- Duration
+- Description
+
+---
+
+## UserExercise
+
+Model opisujący ćwiczenia przypisane użytkownikowi:
+
+- User
+- Exercise
+- IsCompleted
+- DateAdded
+
+---
+
+## ApplicationUser
+
+Rozszerzony model użytkownika zawierający między innymi:
+
+- Email
+- FullName
+- RegisteredAt
+- LastLoginAt
+- LastLogoutAt
+
+---
+
+# Struktura projektu
+
+Projekt wykorzystuje standardową strukturę ASP.NET Core MVC:
+
+- Controllers
+- Models
+- Views
+- Data
+- wwwroot
+- Areas
+- Migrations
+
+---
+
+# Instrukcja uruchomienia
+
+## 1. Pobranie projektu
+
+```bash
+git clone <adres_repozytorium>
+```
+
+## 2. Przejście do katalogu projektu
+
+```bash
+cd Projekt
+```
+
+## 3. Przywrócenie zależności
+
+```bash
+dotnet restore
+```
+
+## 4. Uruchomienie aplikacji
+
+```bash
+dotnet run
+```
+
+Po uruchomieniu aplikacja będzie dostępna pod adresem:
+
+```
+http://localhost:5015
+```
+
+lub
+
+```
+https://localhost:7154
+```
+
+Adresy zostały skonfigurowane w pliku `launchSettings.json`.
+
+---
+
+# Podsumowanie
+
+Projekt został wykonany zgodnie z architekturą MVC oraz wykorzystuje nowoczesne technologie platformy .NET.
+
+Aplikacja umożliwia zarządzanie ćwiczeniami fitness, obsługę użytkowników oraz monitorowanie postępów treningowych. Zawiera system logowania, podział na role, operacje CRUD, filtrowanie danych oraz estetyczny interfejs użytkownika, dzięki czemu stanowi kompletny projekt zaliczeniowy.- walidacja formularzy.
 
 ---
 
