@@ -1,542 +1,410 @@
-# Menedżer Treningów Fitness
+🏋️ Menedżer Treningów Fitness
 
-## Projekt zaliczeniowy z wykorzystaniem wzorca MVC
+Projekt zaliczeniowy wykonany w technologii ASP.NET Core MVC
 
----
+⸻
 
-# Spis treści
+Spis treści
 
 1. Opis projektu
 2. Cel projektu
-3. Zastosowane technologie
-4. Funkcjonalności aplikacji
-5. Role użytkowników
-6. Modele danych
-7. Struktura projektu
-8. Instrukcja uruchomienia
-9. Podsumowanie
+3. Wykorzystane technologie
+4. Architektura projektu
+5. Funkcjonalności aplikacji
+6. Role użytkowników
+7. Moduł Premium
+8. AI Fitness Assistant
+9. Modele danych
+10. Struktura projektu
+11. Instrukcja uruchomienia
+12. Dodatkowe funkcjonalności
+13. Podsumowanie
 
----
+⸻
 
-# Opis projektu
+Opis projektu
 
-**Menedżer Treningów Fitness** jest aplikacją internetową stworzoną w technologii **ASP.NET Core MVC**. Projekt umożliwia zarządzanie ćwiczeniami fitness, tworzenie własnych planów treningowych oraz monitorowanie postępów użytkowników.
+Menedżer Treningów Fitness jest nowoczesną aplikacją internetową umożliwiającą zarządzanie treningami oraz monitorowanie postępów użytkowników.
 
-Aplikacja została zaprojektowana zgodnie z architekturą **Model-View-Controller (MVC)**, dzięki czemu logika biznesowa, dane oraz interfejs użytkownika są od siebie oddzielone.
+Projekt został wykonany z wykorzystaniem wzorca projektowego Model-View-Controller (MVC), dzięki czemu logika biznesowa, warstwa prezentacji oraz dostęp do danych są od siebie oddzielone.
 
-Projekt wykorzystuje bazę danych SQLite oraz system uwierzytelniania ASP.NET Identity.
+System pozwala użytkownikowi budować własny plan treningowy, wykonywać ćwiczenia, analizować postępy oraz korzystać z inteligentnych rekomendacji treningowych.
 
----
+Administrator posiada pełny panel zarządzania użytkownikami oraz bazą ćwiczeń.
 
-# Cel projektu
+⸻
 
-Celem projektu było stworzenie nowoczesnej aplikacji internetowej umożliwiającej:
+Cel projektu
 
-- zarządzanie bazą ćwiczeń,
-- tworzenie planów treningowych,
-- monitorowanie wykonanych ćwiczeń,
-- zarządzanie użytkownikami,
-- wykorzystanie systemu logowania oraz autoryzacji.
+Celem projektu było stworzenie kompletnej aplikacji internetowej umożliwiającej:
 
----
+* zarządzanie bazą ćwiczeń,
+* tworzenie własnych planów treningowych,
+* monitorowanie postępów,
+* zarządzanie użytkownikami,
+* wykorzystanie systemu logowania i autoryzacji,
+* zastosowanie architektury MVC,
+* wykorzystanie relacyjnej bazy danych.
 
-# Zastosowane technologie
+⸻
 
-Projekt został wykonany z wykorzystaniem:
+Wykorzystane technologie
 
-- ASP.NET Core MVC
-- C#
-- Entity Framework Core
-- SQLite
-- ASP.NET Identity
-- Razor Views
-- Bootstrap 5
-- HTML5
-- CSS3
-- JavaScript
+Projekt został wykonany z użyciem:
 
----
+* ASP.NET Core MVC
+* C#
+* Entity Framework Core
+* SQLite
+* ASP.NET Identity
+* Razor Views
+* Bootstrap 5
+* HTML5
+* CSS3
+* JavaScript
+* LINQ
 
-# Funkcjonalności aplikacji
+⸻
 
-## Rejestracja i logowanie
+Architektura projektu
+
+Projekt wykorzystuje wzorzec MVC (Model-View-Controller).
+
+Model
+
+Odpowiada za przechowywanie danych oraz logikę biznesową.
+
+View
+
+Odpowiada za interfejs użytkownika oraz prezentację danych.
+
+Controller
+
+Pośredniczy pomiędzy modelem a widokiem, realizując logikę działania aplikacji.
+
+⸻
+
+Funkcjonalności aplikacji
+
+Rejestracja i logowanie
 
 Aplikacja umożliwia:
 
-- rejestrację użytkownika,
-- logowanie,
-- wylogowanie,
-- obsługę ról użytkowników.
+* rejestrację użytkownika,
+* logowanie,
+* wylogowanie,
+* autoryzację,
+* obsługę ról użytkowników,
+* walidację formularzy.
 
----
+⸻
 
-## Panel administratora
+Panel administratora
 
-Administrator posiada możliwość:
+Administrator może:
 
-- przeglądania panelu administracyjnego,
-- zarządzania ćwiczeniami,
-- dodawania nowych ćwiczeń,
-- edycji ćwiczeń,
-- usuwania ćwiczeń,
-- przeglądania szczegółów ćwiczeń,
-- przeglądania listy użytkowników,
-- wyszukiwania użytkowników,
-- przeglądania statystyk systemu.
+* przeglądać panel administracyjny,
+* zarządzać ćwiczeniami,
+* dodawać nowe ćwiczenia,
+* edytować ćwiczenia,
+* usuwać ćwiczenia,
+* przeglądać szczegóły ćwiczeń,
+* zarządzać użytkownikami,
+* wyszukiwać użytkowników,
+* przeglądać statystyki systemu.
 
----
+⸻
 
-## Zarządzanie ćwiczeniami
+Zarządzanie ćwiczeniami
 
 Każde ćwiczenie posiada:
 
-- nazwę,
-- kategorię,
-- poziom trudności,
-- czas trwania,
-- opis.
-
-Administrator może wykonywać pełny zestaw operacji CRUD:
-
-- Create,
-- Read,
-- Update,
-- Delete.
-
----
-
-## Panel użytkownika
-
-Użytkownik może:
-
-- przeglądać swój panel,
-- dodawać ćwiczenia do planu,
-- oznaczać ćwiczenia jako wykonane,
-- usuwać niewykonane ćwiczenia,
-- ponownie dodawać wykonane ćwiczenia,
-- śledzić własne postępy.
-
----
-
-## Filtrowanie ćwiczeń
-
-Dostępne ćwiczenia mogą być filtrowane według:
-
-### kategorii
-
-- Siłowe
-- Cardio
-- Mobilność
-- Core
-- Nogi
-- Ramiona
-- Plecy
-- Brzuch
-- Rozciąganie
-- Relaksacyjne
-
-### poziomu trudności
-
-- Łatwy
-- Średni
-- Trudny
-
----
-
-## Ankieta treningowa
-
-Aplikacja zawiera ankietę pomagającą dobrać odpowiedni trening.
-
-Na podstawie odpowiedzi użytkownika system proponuje ćwiczenia zgodne z:
-
-- samopoczuciem,
-- preferowanym rodzajem treningu,
-- poziomem trudności.
-
----
-
-## Statystyki
-
-Panel administratora prezentuje między innymi:
-
-- liczbę użytkowników,
-- liczbę ćwiczeń,
-- liczbę ćwiczeń dodanych do planów,
-- liczbę wykonanych ćwiczeń.
-
----
-
-# Role użytkowników
-
-## Administrator
-
-Administrator może:
-
-- zarządzać ćwiczeniami,
-- zarządzać użytkownikami,
-- przeglądać statystyki,
-- edytować dane,
-- usuwać dane.
-
----
-
-## Użytkownik
-
-Użytkownik może:
-
-- logować się do systemu,
-- przeglądać dostępne ćwiczenia,
-- filtrować ćwiczenia,
-- dodawać ćwiczenia do planu,
-- oznaczać ćwiczenia jako wykonane,
-- monitorować postępy,
-- korzystać z ankiety treningowej.
-
----
-
-# Modele danych
-
-Projekt wykorzystuje między innymi następujące modele:
-
-## Exercise
-
-Model przechowujący informacje o ćwiczeniu:
-
-- Name
-- Category
-- DifficultyLevel
-- Duration
-- Description
-
----
-
-## UserExercise
-
-Model opisujący ćwiczenia przypisane użytkownikowi:
-
-- User
-- Exercise
-- IsCompleted
-- DateAdded
-
----
-
-## ApplicationUser
-
-Rozszerzony model użytkownika zawierający między innymi:
-
-- Email
-- FullName
-- RegisteredAt
-- LastLoginAt
-- LastLogoutAt
-
----
-
-# Struktura projektu
-
-Projekt wykorzystuje standardową strukturę ASP.NET Core MVC:
-
-- Controllers
-- Models
-- Views
-- Data
-- wwwroot
-- Areas
-- Migrations
-
----
-
-# Instrukcja uruchomienia
-
-## 1. Pobranie projektu
-
-```bash
-git clone <adres_repozytorium>
-```
-
-## 2. Przejście do katalogu projektu
-
-```bash
-cd Projekt
-```
-
-## 3. Przywrócenie zależności
-
-```bash
-dotnet restore
-```
-
-## 4. Uruchomienie aplikacji
-
-```bash
-dotnet run
-```
-
-Po uruchomieniu aplikacja będzie dostępna pod adresem:
-
-```
-http://localhost:5015
-```
-
-lub
-
-```
-https://localhost:7154
-```
-
-Adresy zostały skonfigurowane w pliku `launchSettings.json`.
-
----
-
-# Podsumowanie
-
-Projekt został wykonany zgodnie z architekturą MVC oraz wykorzystuje nowoczesne technologie platformy .NET.
-
-Aplikacja umożliwia zarządzanie ćwiczeniami fitness, obsługę użytkowników oraz monitorowanie postępów treningowych. Zawiera system logowania, podział na role, operacje CRUD, filtrowanie danych oraz estetyczny interfejs użytkownika, dzięki czemu stanowi kompletny projekt zaliczeniowy.- walidacja formularzy.
-
----
-
-## Panel Administratora
-
-Administrator może:
-
-- przeglądać panel administracyjny,
-- zarządzać ćwiczeniami,
-- dodawać nowe ćwiczenia,
-- edytować ćwiczenia,
-- usuwać ćwiczenia,
-- wyświetlać szczegóły ćwiczeń,
-- przeglądać listę użytkowników,
-- wyszukiwać użytkowników,
-- sprawdzać statystyki systemu.
-
----
-
-## Zarządzanie ćwiczeniami
-
-Administrator może dodawać:
-
-- nazwę ćwiczenia,
-- kategorię,
-- poziom trudności,
-- czas trwania,
-- opis ćwiczenia.
-
-Dostępne operacje:
-
-- Create
-- Read
-- Update
-- Delete
+* nazwę,
+* kategorię,
+* poziom trudności,
+* czas trwania,
+* opis,
+* informacje o wymaganym sprzęcie,
+* instrukcję wykonania.
+
+Administrator wykonuje pełne operacje:
+
+* Create
+* Read
+* Update
+* Delete
 
 (CRUD)
 
----
+⸻
 
-## Panel użytkownika
+Panel użytkownika
 
 Użytkownik może:
 
-- przeglądać własny panel,
-- dodawać ćwiczenia do swojego planu,
-- oznaczać ćwiczenia jako wykonane,
-- przeglądać wykonane ćwiczenia,
-- przeglądać niewykonane ćwiczenia,
-- filtrować ćwiczenia,
-- korzystać z ankiety treningowej.
+* przeglądać własny panel,
+* dodawać ćwiczenia do planu,
+* wykonywać ćwiczenia,
+* oznaczać ćwiczenia jako wykonane,
+* usuwać niewykonane ćwiczenia,
+* ponownie dodawać wykonane ćwiczenia,
+* śledzić własne postępy,
+* analizować statystyki.
 
----
+⸻
 
-## Filtrowanie ćwiczeń
+Wykonywanie ćwiczeń
 
-Użytkownik może filtrować ćwiczenia według:
+Po wybraniu ćwiczenia użytkownik otrzymuje:
 
-### kategorii
+* nazwę ćwiczenia,
+* poziom trudności,
+* czas wykonania,
+* liczbę serii,
+* liczbę powtórzeń,
+* instrukcję wykonania,
+* wymagany sprzęt.
 
-- Siłowe
-- Cardio
-- Rozciąganie
-- Relaksacyjne
-- Mobilność
-- Core
+Po zakończeniu treningu może oznaczyć ćwiczenie jako wykonane.
 
-### poziomu trudności
+⸻
 
-- Łatwy
-- Średni
-- Trudny
+Filtrowanie ćwiczeń
 
----
+Ćwiczenia mogą być filtrowane według:
 
-## Ankieta treningowa
+kategorii
 
-Aplikacja zawiera ankietę pomagającą dobrać odpowiednie ćwiczenia.
+* Siłowe
+* Cardio
+* Mobilność
+* Core
+* Nogi
+* Ramiona
+* Plecy
+* Brzuch
+* Rozciąganie
+* Relaksacyjne
 
-Użytkownik wybiera między innymi:
+poziomu trudności
 
-- swoje samopoczucie,
-- rodzaj treningu,
-- poziom trudności.
+* Łatwy
+* Średni
+* Trudny
 
-Na podstawie odpowiedzi aplikacja proponuje odpowiednie ćwiczenia.
+statusu
 
----
+* Wszystkie
+* Do wykonania
+* Wykonane
 
-## Statystyki
+System posiada inteligentny mechanizm wyszukiwania — jeżeli nie znajdzie idealnego dopasowania, proponuje najbardziej podobne ćwiczenia.
 
-Administrator może zobaczyć między innymi:
+⸻
 
-- liczbę użytkowników,
-- liczbę ćwiczeń,
-- liczbę wykonanych ćwiczeń,
-- liczbę ćwiczeń dodanych do planów.
+Ankieta treningowa
 
----
+Użytkownik może wypełnić ankietę dnia.
 
-# Role użytkowników
+System analizuje:
 
-## Administrator
+* samopoczucie,
+* preferowany rodzaj treningu,
+* poziom trudności,
+* oczekiwania użytkownika.
+
+Na podstawie odpowiedzi proponowane są najlepiej dopasowane ćwiczenia.
+
+⸻
+
+Moduł Premium
+
+Projekt zawiera dodatkowy moduł Premium.
+
+Użytkownik może przejść przez symulację zakupu konta Premium z wyborem metody płatności.
+
+Po aktywacji otrzymuje dostęp do:
+
+* rozszerzonych statystyk,
+* inteligentnych rekomendacji,
+* panelu Premium,
+* planu dnia,
+* dodatkowych analiz postępów.
+
+⸻
+
+AI Fitness Assistant
+
+Aplikacja zawiera inteligentnego asystenta treningowego.
+
+Asystent prowadzi rozmowę z użytkownikiem i zadaje pytania dotyczące:
+
+* aktualnego samopoczucia,
+* celu treningu,
+* preferowanego poziomu,
+* rodzaju aktywności.
+
+Na podstawie odpowiedzi proponuje najbardziej odpowiednie ćwiczenia.
+
+⸻
+
+Statystyki
+
+Panel użytkownika prezentuje między innymi:
+
+* liczbę wszystkich ćwiczeń,
+* liczbę wykonanych ćwiczeń,
+* liczbę aktywnych ćwiczeń,
+* procent ukończenia planu,
+* całkowity czas treningów.
+
+Administrator posiada dodatkowo statystyki całego systemu.
+
+⸻
+
+Role użytkowników
+
+Administrator
 
 Posiada pełne uprawnienia do zarządzania aplikacją.
 
 Może:
 
-- dodawać dane,
-- edytować dane,
-- usuwać dane,
-- przeglądać użytkowników,
-- zarządzać ćwiczeniami.
+* zarządzać użytkownikami,
+* zarządzać ćwiczeniami,
+* dodawać dane,
+* edytować dane,
+* usuwać dane,
+* przeglądać statystyki.
 
----
+⸻
 
-## User
+User
 
 Może:
 
-- logować się,
-- dodawać ćwiczenia,
-- wykonywać ćwiczenia,
-- śledzić postępy,
-- korzystać z filtrów,
-- korzystać z ankiety.
+* logować się,
+* korzystać z panelu użytkownika,
+* filtrować ćwiczenia,
+* dodawać ćwiczenia do planu,
+* wykonywać ćwiczenia,
+* śledzić postępy,
+* korzystać z ankiety,
+* korzystać z AI Assistant,
+* korzystać z modułu Premium.
 
----
+⸻
 
-# Modele danych
+Modele danych
 
-Projekt wykorzystuje między innymi następujące modele:
-
-## Exercise
+Exercise
 
 Przechowuje informacje o ćwiczeniu:
 
-- Name
-- Category
-- DifficultyLevel
-- Duration
-- Description
+* Name
+* Category
+* DifficultyLevel
+* Duration
+* Description
+* Equipment
+* Instruction
 
----
+⸻
 
-## UserExercise
+UserExercise
 
 Przechowuje informacje o ćwiczeniach przypisanych użytkownikowi:
 
-- User
-- Exercise
-- IsCompleted
-- DateAdded
+* User
+* Exercise
+* IsCompleted
+* AddedAt
+* CompletedAt
 
----
+⸻
 
-## ApplicationUser
+ApplicationUser
 
-Rozszerzony model użytkownika zawierający między innymi:
+Rozszerzony model użytkownika zawierający:
 
-- Email
-- FullName
-- RegisteredAt
-- LastLoginAt
-- LastLogoutAt
+* Email
+* FullName
+* RegisteredAt
+* LastLoginAt
+* LastLogoutAt
 
----
+⸻
 
-# Instrukcja uruchomienia
+Struktura projektu
 
-## 1. Pobranie projektu
+Projekt wykorzystuje standardową strukturę MVC:
 
-```bash
+* Controllers
+* Models
+* Views
+* Data
+* Areas
+* Migrations
+* wwwroot
+
+⸻
+
+Instrukcja uruchomienia
+
+1. Pobranie projektu
+
 git clone <adres_repozytorium>
-```
 
-## 2. Przejście do katalogu
+2. Przejście do katalogu
 
-```bash
 cd Projekt
-```
 
-## 3. Instalacja zależności
+3. Przywrócenie zależności
 
-```bash
 dotnet restore
-```
 
-## 4. Utworzenie bazy danych
+4. Aktualizacja bazy danych
 
-```bash
 dotnet ef database update
-```
 
-## 5. Uruchomienie aplikacji
+5. Uruchomienie aplikacji
 
-```bash
 dotnet run
-```
 
-Po uruchomieniu aplikacja będzie dostępna pod adresem:
+Po uruchomieniu aplikacja będzie dostępna pod adresami:
 
-```
-http://localhost:5000
-```
+http://localhost:5015
 
 lub
 
-```
-https://localhost:7000
-```
+https://localhost:7154
 
-(zależnie od konfiguracji projektu).
+(adresy zgodne z konfiguracją launchSettings.json).
 
----
+⸻
 
-# Struktura projektu
+Dodatkowe funkcjonalności
 
-Projekt wykorzystuje architekturę MVC:
+Projekt został rozszerzony o funkcje wykraczające poza podstawowe wymagania:
 
-- **Models** – modele danych,
-- **Views** – widoki,
-- **Controllers** – logika aplikacji,
-- **Data** – baza danych,
-- **wwwroot** – pliki statyczne,
-- **Areas/Identity** – logowanie i rejestracja.
+* inteligentny dobór ćwiczeń,
+* AI Fitness Assistant,
+* moduł Premium,
+* symulację zakupu Premium,
+* rozbudowane statystyki,
+* nowoczesny responsywny interfejs,
+* wyszukiwanie użytkowników,
+* inteligentne filtrowanie ćwiczeń,
+* monitorowanie postępów,
+* walidację formularzy,
+* estetyczne panele administracyjne i użytkownika.
 
----
+⸻
 
-# Podsumowanie
+Podsumowanie
 
-Projekt został wykonany zgodnie z architekturą MVC i zawiera:
+Projekt został wykonany zgodnie z architekturą ASP.NET Core MVC oraz dobrymi praktykami programowania aplikacji internetowych.
 
-- system logowania,
-- podział na role,
-- zarządzanie ćwiczeniami,
-- CRUD,
-- filtrowanie,
-- wyszukiwanie,
-- panel administratora,
-- panel użytkownika,
-- nowoczesny interfejs graficzny,
-- bazę danych SQLite,
-- wykorzystanie Entity Framework Core oraz ASP.NET Identity.
+Aplikacja umożliwia kompleksowe zarządzanie treningami fitness, obsługę użytkowników oraz monitorowanie postępów. Oprócz podstawowych funkcjonalności wymaganych w projekcie zaimplementowano również szereg autorskich rozszerzeń, takich jak moduł Premium, AI Fitness Assistant, inteligentny dobór ćwiczeń oraz rozbudowany system statystyk.
 
-Aplikacja spełnia wymagania projektu zaliczeniowego i stanowi kompletny system organizacji treningów fitness.
+Dzięki wykorzystaniu ASP.NET Identity, Entity Framework Core, SQLite oraz wzorca MVC, projekt stanowi kompletną i nowoczesną aplikację internetową spełniającą wymagania projektu zaliczeniowego oraz prezentującą praktyczne zastosowanie technologii platformy .NET.
