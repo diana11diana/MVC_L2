@@ -13,5 +13,8 @@ namespace Projekt.Models
         public int TotalSessions { get; set; }
         public int TotalCalories { get; set; }
         public double AverageDuration { get; set; }
+        public int ActiveExercisesCount { get; set; }
+        public int ProgressPercent { get; set; }
+        public int TotalTrainingMinutes { get; set; }
     }
 }

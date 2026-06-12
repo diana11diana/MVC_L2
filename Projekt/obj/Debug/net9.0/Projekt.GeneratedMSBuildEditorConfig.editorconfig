@@ -92,6 +92,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Vc2VySG9tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/dianabrosko/MVC_L2/Projekt/Views/Premium/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJlbWl1bS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dianabrosko/MVC_L2/Projekt/Views/Premium/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJlbWl1bS9QYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dianabrosko/MVC_L2/Projekt/Views/Premium/PremiumPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJlbWl1bS9QcmVtaXVtUGFuZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/dianabrosko/MVC_L2/Projekt/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -106,6 +118,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/dianabrosko/MVC_L2/Projekt/Views/UserExercises/Available.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlckV4ZXJjaXNlcy9BdmFpbGFibGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dianabrosko/MVC_L2/Projekt/Views/UserExercises/Execute.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlckV4ZXJjaXNlcy9FeGVjdXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/dianabrosko/MVC_L2/Projekt/Views/UserExercises/MyExercises.cshtml]

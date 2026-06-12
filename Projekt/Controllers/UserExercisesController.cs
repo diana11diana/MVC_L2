@@ -33,22 +33,57 @@ public class UserExercisesController : Controller
         ViewBag.ActiveExerciseIds = activeExerciseIds;
         ViewBag.CurrentDifficulty = difficulty;
         ViewBag.CurrentCategory = category;
+        ViewBag.FilterMessage = null;
 
-        var exercises = _context.Exercises.AsQueryable();
+        var allExercises = _context.Exercises.AsQueryable();
+
+        IQueryable<Exercise> query = allExercises;
 
         if (!string.IsNullOrWhiteSpace(difficulty))
         {
-            exercises = exercises.Where(x => x.DifficultyLevel == difficulty);
+            query = query.Where(x => x.DifficultyLevel == difficulty);
         }
 
         if (!string.IsNullOrWhiteSpace(category))
         {
-            exercises = exercises.Where(x => x.Category == category);
+            query = query.Where(x => x.Category == category);
         }
 
-        return View(await exercises
+        var exercises = await query
             .OrderBy(x => x.Name)
-            .ToListAsync());
+            .ToListAsync();
+
+        if (!exercises.Any() && !string.IsNullOrWhiteSpace(category))
+        {
+            exercises = await allExercises
+                .Where(x => x.Category == category)
+                .OrderBy(x => x.Name)
+                .ToListAsync();
+
+            ViewBag.FilterMessage = "Nie znaleziono dokładnego dopasowania, pokazano ćwiczenia z podobnej kategorii.";
+        }
+
+        if (!exercises.Any() && !string.IsNullOrWhiteSpace(difficulty))
+        {
+            exercises = await allExercises
+                .Where(x => x.DifficultyLevel == difficulty)
+                .OrderBy(x => x.Name)
+                .ToListAsync();
+
+            ViewBag.FilterMessage = "Nie znaleziono dokładnego dopasowania, pokazano ćwiczenia o podobnym poziomie trudności.";
+        }
+
+        if (!exercises.Any())
+        {
+            exercises = await allExercises
+                .OrderBy(x => x.Name)
+                .Take(30)
+                .ToListAsync();
+
+            ViewBag.FilterMessage = "Nie znaleziono idealnych ćwiczeń, pokazano przykładowe propozycje.";
+        }
+
+        return View(exercises);
     }
 
     public async Task<IActionResult> MyExercises(string? status)
@@ -152,5 +187,21 @@ public class UserExercisesController : Controller
         await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(MyExercises));
+    }
+
+    public async Task<IActionResult> Execute(int id)
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var userExercise = await _context.UserExercises
+            .Include(x => x.Exercise)
+            .FirstOrDefaultAsync(x => x.Id == id && x.UserId == userId);
+
+        if (userExercise == null)
+        {
+            return NotFound();
+        }
+
+        return View(userExercise);
     }
 }

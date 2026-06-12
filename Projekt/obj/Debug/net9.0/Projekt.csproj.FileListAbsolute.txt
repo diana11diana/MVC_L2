@@ -394,4 +394,4 @@
 /Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/Projekt.pdb
 /Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/Projekt.genruntimeconfig.cache
 /Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/ref/Projekt.dll
-/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-ewb7d3jmmf.gz
+/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-6ir0p3a9cm.gz

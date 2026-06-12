@@ -11,4 +11,5 @@ public class ApplicationUser : IdentityUser
     public DateTime? LastLoginAt { get; set; }
 
     public DateTime? LastLogoutAt { get; set; }
+    public bool IsPremium { get; set; } = false;
 }

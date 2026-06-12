@@ -198,3 +198,15 @@ body {
     font-weight: 600;
 }
 
+.exercise-card{
+    transition:.25s;
+    border-radius:24px;
+}
+
+.exercise-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 22px 45px rgba(0,0,0,.15);
+
+}

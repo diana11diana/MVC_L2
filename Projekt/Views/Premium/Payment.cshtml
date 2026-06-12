@@ -1,0 +1,180 @@
+@{
+    ViewData["Title"] = "Płatność Premium";
+}
+
+<div class="container py-5">
+
+    <div class="payment-card mx-auto">
+
+        <div class="text-center mb-4">
+            <div class="payment-icon">💳</div>
+            <h1>Płatność Premium</h1>
+            <p class="text-muted">To jest demonstracyjna płatność. Możesz wpisać dowolne dane.</p>
+        </div>
+
+        <div class="alert alert-info">
+            Plan Premium: <strong>19,99 zł / miesiąc</strong>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Metoda płatności</label>
+            <select id="paymentMethod" class="form-select" onchange="changePaymentMethod()">
+                <option value="card">Karta płatnicza</option>
+                <option value="blik">BLIK</option>
+                <option value="transfer">Szybki przelew</option>
+            </select>
+        </div>
+
+        <div id="cardFields">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Numer karty</label>
+                <input class="form-control" placeholder="1234 5678 9012 3456" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Data ważności</label>
+                    <input class="form-control" placeholder="12/30" />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">CVV</label>
+                    <input class="form-control" placeholder="123" />
+                </div>
+            </div>
+        </div>
+
+        <div id="blikFields" class="d-none">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Kod BLIK</label>
+                <input class="form-control" placeholder="123456" />
+            </div>
+        </div>
+
+        <div id="transferFields" class="d-none">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Bank</label>
+                <select class="form-select">
+                    <option>PKO BP</option>
+                    <option>mBank</option>
+                    <option>Santander</option>
+                    <option>ING</option>
+                    <option>Alior Bank</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button"
+                class="btn btn-warning btn-lg w-100 mt-3"
+                onclick="startFakePayment()">
+            💰 Opłać Premium
+        </button>
+
+        <a asp-action="Index" class="btn btn-outline-secondary w-100 mt-3">
+            ↩ Powrót
+        </a>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="paymentModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+
+            <div class="modal-body p-5">
+
+                <div id="loadingBox">
+                    <div class="spinner-border text-warning mb-4" style="width: 4rem; height: 4rem;"></div>
+
+                    <h3>Oczekiwanie na potwierdzenie płatności...</h3>
+                    <p class="text-muted">To może potrwać kilka sekund.</p>
+                </div>
+
+                <div id="successBox" class="d-none">
+                    <div class="fs-1 mb-3">✅</div>
+
+                    <h3>Płatność zaakceptowana!</h3>
+                    <p class="text-muted">Twoje konto Premium zostało aktywowane.</p>
+
+                    <form asp-action="ConfirmPayment" method="post">
+                        <button type="submit" class="btn btn-success btn-lg mt-3">
+                            Przejdź do Premium
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function changePaymentMethod() {
+        const method = document.getElementById("paymentMethod").value;
+
+        document.getElementById("cardFields").classList.add("d-none");
+        document.getElementById("blikFields").classList.add("d-none");
+        document.getElementById("transferFields").classList.add("d-none");
+
+        if (method === "card") {
+            document.getElementById("cardFields").classList.remove("d-none");
+        }
+
+        if (method === "blik") {
+            document.getElementById("blikFields").classList.remove("d-none");
+        }
+
+        if (method === "transfer") {
+            document.getElementById("transferFields").classList.remove("d-none");
+        }
+    }
+
+    function startFakePayment() {
+        const modal = new bootstrap.Modal(document.getElementById("paymentModal"));
+        modal.show();
+
+        document.getElementById("loadingBox").classList.remove("d-none");
+        document.getElementById("successBox").classList.add("d-none");
+
+        setTimeout(function () {
+            document.getElementById("loadingBox").classList.add("d-none");
+            document.getElementById("successBox").classList.remove("d-none");
+        }, 7000);
+    }
+</script>
+
+<style>
+    .payment-card {
+        max-width: 560px;
+        background: white;
+        border-radius: 32px;
+        padding: 45px;
+        box-shadow: 0 25px 65px rgba(15, 23, 42, .18);
+    }
+
+    .payment-icon {
+        width: 82px;
+        height: 82px;
+        margin: 0 auto 18px;
+        border-radius: 26px;
+        background: linear-gradient(135deg, #facc15, #f97316);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 42px;
+        box-shadow: 0 18px 40px rgba(250, 204, 21, .35);
+    }
+
+    .payment-card h1 {
+        font-weight: 900;
+        color: #0f172a;
+    }
+
+    .payment-card .form-control,
+    .payment-card .form-select {
+        height: 56px;
+        border-radius: 16px;
+    }
+</style>

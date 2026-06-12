@@ -108,4 +108,12 @@ using (var scope = app.Services.CreateScope())
     await DemoUserSeeder.SeedDemoUsersAsync(context, userManager);
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    await PremiumUserSeeder.SeedPremiumUserAsync(userManager, roleManager);
+}
+
 app.Run();

@@ -2,16 +2,13 @@
 
 @{
     ViewData["Title"] = "Moje ćwiczenia";
+    string? currentStatus = ViewBag.CurrentStatus;
 }
 
 <div class="page-header mb-4">
     <h1 class="display-5 fw-bold">Moje ćwiczenia</h1>
     <p class="text-muted">Tutaj znajdują się ćwiczenia dodane do Twojego planu.</p>
 </div>
-
-@{
-    string? currentStatus = ViewBag.CurrentStatus;
-}
 
 <div class="card shadow-sm p-3 mb-4">
     <form method="get" class="row g-3 align-items-end">
@@ -83,7 +80,7 @@ else
         @foreach (var item in Model)
         {
             <div class="col-md-4">
-                <div class="card h-100 p-4 shadow-sm">
+                <div class="card h-100 p-4 shadow-lg border-0 exercise-card">
 
                     <div class="fs-1 mb-3">
                         @(item.IsCompleted ? "✅" : "⭕")
@@ -91,11 +88,22 @@ else
 
                     <h4 class="fw-bold">@item.Exercise?.Name</h4>
 
+                    <div class="mb-3">
+                        <span class="badge bg-primary">
+                            @item.Exercise?.DifficultyLevel
+                        </span>
+
+                        <span class="badge bg-success">
+                            ⏱ @item.Exercise?.Duration min
+                        </span>
+                    </div>
+
                     <p class="text-muted">@item.Exercise?.Category</p>
 
-                    <p>
-                        ⏱️ @item.Exercise?.Duration min
-                    </p>
+                    <div class="alert alert-light mt-3">
+                        <strong>🏋️ Sprzęt:</strong>
+                        @item.Exercise?.Equipment
+                    </div>
 
                     <p>
                         Status:
@@ -113,9 +121,15 @@ else
                         }
                     </p>
 
+                    <div class="progress mb-3" style="height:10px;">
+                        <div class="progress-bar bg-success"
+                             style="width:@(item.IsCompleted ? "100" : "0")%">
+                        </div>
+                    </div>
+
                     @if (item.IsCompleted)
                     {
-                        <div class="alert alert-success mt-auto mb-0">
+                        <div class="alert alert-success mt-auto mb-3">
                             ✅ Ćwiczenie zostało wykonane.
 
                             @if (item.CompletedAt != null)
@@ -125,15 +139,27 @@ else
                                 @item.CompletedAt?.ToString("yyyy-MM-dd HH:mm")
                             }
                         </div>
+
+                        <a asp-action="Available"
+                           class="btn btn-outline-primary mt-auto">
+                            ➕ Dodaj ponownie
+                        </a>
                     }
                     else
                     {
-                        <div class="d-flex gap-2 mt-auto">
+                        <div class="d-flex gap-2 mt-auto flex-wrap">
+
+                            <a asp-action="Execute"
+                               asp-route-id="@item.Id"
+                               class="btn btn-primary">
+                                ▶ Wykonuj
+                            </a>
+
                             <form asp-action="Complete" method="post">
                                 <input type="hidden" name="id" value="@item.Id" />
 
                                 <button class="btn btn-success">
-                                    ✓ Wykonano
+                                    ✅ Wykonano
                                 </button>
                             </form>
 
@@ -141,9 +167,10 @@ else
                                 <input type="hidden" name="id" value="@item.Id" />
 
                                 <button class="btn btn-danger">
-                                    ✕ Usuń
+                                    🗑 Usuń
                                 </button>
                             </form>
+
                         </div>
                     }
 

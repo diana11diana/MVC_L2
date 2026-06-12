@@ -19,9 +19,7 @@
                 <input type="hidden" asp-for="Id" />
 
                 <div class="mb-3">
-                    <label asp-for="Name" class="form-label fw-bold">
-                        Nazwa ćwiczenia
-                    </label>
+                    <label asp-for="Name" class="form-label fw-bold">Nazwa ćwiczenia</label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
@@ -53,22 +51,50 @@
                     <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
                 </div>
 
+                <div class="row">
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="Duration" class="form-label fw-bold">Czas (min)</label>
+                        <input asp-for="Duration" class="form-control" />
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="Sets" class="form-label fw-bold">Serie</label>
+                        <input asp-for="Sets" class="form-control" />
+                        <span asp-validation-for="Sets" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="Repetitions" class="form-label fw-bold">Powtórzenia</label>
+                        <input asp-for="Repetitions" class="form-control" />
+                        <span asp-validation-for="Repetitions" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="RestSeconds" class="form-label fw-bold">Przerwa (s)</label>
+                        <input asp-for="RestSeconds" class="form-control" />
+                        <span asp-validation-for="RestSeconds" class="text-danger"></span>
+                    </div>
+
+                </div>
+
                 <div class="mb-3">
-                    <label asp-for="Duration" class="form-label fw-bold">
-                        Czas trwania w minutach
-                    </label>
-                    <input asp-for="Duration" class="form-control" />
-                    <span asp-validation-for="Duration" class="text-danger"></span>
+                    <label asp-for="Equipment" class="form-label fw-bold">Potrzebny sprzęt</label>
+                    <input asp-for="Equipment" class="form-control" />
+                    <span asp-validation-for="Equipment" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold">Krótki opis</label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4">
-                    <label asp-for="Description" class="form-label fw-bold">
-                        Opis
-                    </label>
-                    <textarea asp-for="Description"
-                              class="form-control"
-                              rows="5"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <label asp-for="Instruction" class="form-label fw-bold">Instrukcja wykonania</label>
+                    <textarea asp-for="Instruction" class="form-control" rows="6"></textarea>
+                    <span asp-validation-for="Instruction" class="text-danger"></span>
                 </div>
 
                 <button type="submit" class="btn btn-success">
@@ -87,7 +113,7 @@
 
 </div>
 
-@section Scripts{
+@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }

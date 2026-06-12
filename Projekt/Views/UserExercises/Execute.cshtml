@@ -1,0 +1,276 @@
+@model Projekt.Models.UserExercise
+
+@{
+    ViewData["Title"] = "Wykonywanie ćwiczenia";
+    var durationMinutes = Model.Exercise?.Duration ?? 0;
+    var durationSeconds = durationMinutes * 60;
+}
+
+<div class="container py-4">
+
+    <div class="execute-hero mb-4">
+        <div>
+            <h1>▶ @Model.Exercise?.Name</h1>
+            <p>Wykonaj ćwiczenie zgodnie z instrukcją i oznacz je jako ukończone.</p>
+        </div>
+
+        <div class="execute-level">
+            @Model.Exercise?.DifficultyLevel
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+            <div class="execute-card text-center">
+                <div class="fs-1">🔁</div>
+                <h5>Serie</h5>
+                <h2>@Model.Exercise?.Sets</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="execute-card text-center">
+                <div class="fs-1">💪</div>
+                <h5>Powtórzenia</h5>
+                <h2>@Model.Exercise?.Repetitions</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="execute-card text-center">
+                <div class="fs-1">😴</div>
+                <h5>Przerwa</h5>
+                <h2>@Model.Exercise?.RestSeconds s</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="execute-card text-center">
+                <div class="fs-1">⏱️</div>
+                <h5>Czas</h5>
+                <h2>@Model.Exercise?.Duration min</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-7">
+            <div class="execute-panel h-100">
+                <h3>📋 Instrukcja wykonania</h3>
+
+                <div class="instruction-box mt-3">
+                    @if (!string.IsNullOrWhiteSpace(Model.Exercise?.Instruction))
+                    {
+                        @Model.Exercise.Instruction
+                    }
+                    else
+                    {
+                        <span>
+                            Wykonaj ćwiczenie spokojnie, technicznie i zgodnie z podaną liczbą serii oraz powtórzeń.
+                        </span>
+                    }
+                </div>
+
+                <div class="equipment-box mt-4">
+                    <h5>🏋️ Potrzebny sprzęt</h5>
+                    <p class="mb-0">@Model.Exercise?.Equipment</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="timer-panel h-100 text-center">
+
+                <h3>⏱️ Timer treningu</h3>
+
+                <div id="timerDisplay" class="timer-display">
+                    00:00
+                </div>
+
+                <div class="progress mt-3 mb-4" style="height: 18px;">
+                    <div id="timerProgress"
+                         class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                         role="progressbar"
+                         style="width: 0%">
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <button type="button" class="btn btn-success" onclick="startTimer()">
+                        ▶ Start
+                    </button>
+
+                    <button type="button" class="btn btn-warning" onclick="pauseTimer()">
+                        ⏸ Pauza
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" onclick="resetTimer()">
+                        🔄 Reset
+                    </button>
+                </div>
+
+                <div id="finishMessage" class="alert alert-success mt-4 d-none">
+                    🎉 Brawo! Trening zakończony.
+                </div>
+
+                <form asp-action="Complete" method="post" class="mt-4">
+                    <input type="hidden" name="id" value="@Model.Id" />
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        ✅ Zakończ i oznacz jako wykonane
+                    </button>
+                </form>
+
+                <a asp-action="MyExercises" class="btn btn-outline-dark w-100 mt-3">
+                    ↩ Powrót do mojego planu
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let totalSeconds = @durationSeconds;
+    let elapsedSeconds = 0;
+    let timerInterval = null;
+
+    const timerDisplay = document.getElementById("timerDisplay");
+    const timerProgress = document.getElementById("timerProgress");
+    const finishMessage = document.getElementById("finishMessage");
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const restSeconds = seconds % 60;
+
+        return String(minutes).padStart(2, "0") + ":" + String(restSeconds).padStart(2, "0");
+    }
+
+    function updateTimer() {
+        timerDisplay.innerText = formatTime(elapsedSeconds);
+
+        if (totalSeconds > 0) {
+            const percent = Math.min((elapsedSeconds / totalSeconds) * 100, 100);
+            timerProgress.style.width = percent + "%";
+        }
+
+        if (totalSeconds > 0 && elapsedSeconds >= totalSeconds) {
+            pauseTimer();
+            finishMessage.classList.remove("d-none");
+        }
+    }
+
+    function startTimer() {
+        if (timerInterval !== null) {
+            return;
+        }
+
+        timerInterval = setInterval(function () {
+            elapsedSeconds++;
+            updateTimer();
+        }, 1000);
+    }
+
+    function pauseTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+
+    function resetTimer() {
+        pauseTimer();
+        elapsedSeconds = 0;
+        finishMessage.classList.add("d-none");
+        updateTimer();
+    }
+
+    updateTimer();
+</script>
+
+<style>
+    .execute-hero {
+        background: linear-gradient(135deg, #2563eb, #14b8a6);
+        color: white;
+        border-radius: 30px;
+        padding: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 24px 55px rgba(37, 99, 235, 0.25);
+    }
+
+    .execute-hero h1 {
+        font-weight: 900;
+        font-size: 42px;
+    }
+
+    .execute-hero p {
+        font-size: 18px;
+        opacity: .95;
+    }
+
+    .execute-level {
+        background: rgba(255,255,255,.18);
+        border: 1px solid rgba(255,255,255,.35);
+        border-radius: 999px;
+        padding: 14px 24px;
+        font-weight: 900;
+        font-size: 20px;
+    }
+
+    .execute-card,
+    .execute-panel,
+    .timer-panel {
+        background: white;
+        border-radius: 26px;
+        padding: 28px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+        border: 1px solid rgba(226, 232, 240, .9);
+    }
+
+    .execute-card h5 {
+        color: #64748b;
+        font-weight: 800;
+    }
+
+    .execute-card h2 {
+        font-weight: 900;
+        color: #2563eb;
+    }
+
+    .instruction-box {
+        background: #eff6ff;
+        border-left: 6px solid #2563eb;
+        padding: 22px;
+        border-radius: 18px;
+        font-size: 17px;
+        line-height: 1.7;
+        white-space: pre-line;
+    }
+
+    .equipment-box {
+        background: #f0fdfa;
+        border-left: 6px solid #14b8a6;
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .timer-display {
+        font-size: 64px;
+        font-weight: 900;
+        color: #0f172a;
+        margin-top: 25px;
+    }
+
+    @@media (max-width: 768px) {
+        .execute-hero {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+    }
+</style>

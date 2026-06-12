@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "z85rrCdaLPKsyEOZhn/W5ynOSP0+AsBvrJovd5CcfBU=",
+  "Hash": "YvqzKBOXbNuxLcVMWWmgbc23Z7r1Si1yFAqTtn46OeM=",
   "Source": "Projekt",
   "BasePath": "_content/Projekt",
   "Mode": "Default",
@@ -1571,12 +1571,12 @@
       "OriginalItemSpec": "/Users/dianabrosko/.nuget/packages/microsoft.aspnetcore.identity.ui/9.0.0/staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.css"
     },
     {
-      "Identity": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-ewb7d3jmmf.gz",
+      "Identity": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-6ir0p3a9cm.gz",
       "SourceId": "Projekt",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/Projekt",
-      "RelativePath": "css/site#[.{fingerprint=ewb7d3jmmf}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=6ir0p3a9cm}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1585,8 +1585,8 @@
       "RelatedAsset": "/Users/dianabrosko/MVC_L2/Projekt/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "5r03l2krpg",
-      "Integrity": "kaOYa+mqDiMt8c03dDCeODrcD9MzTEQb/7vcsaIyuj4=",
+      "Fingerprint": "p5zaavhoei",
+      "Integrity": "g/nRSumlEHHfIrONfz2nP9fM75RXfEFS+rpWf0WXB1w=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/dianabrosko/MVC_L2/Projekt/wwwroot/css/site.css"
@@ -4042,8 +4042,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ewb7d3jmmf",
-      "Integrity": "Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE=",
+      "Fingerprint": "6ir0p3a9cm",
+      "Integrity": "PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -5353,6 +5353,167 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/site.6ir0p3a9cm.css",
+      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-6ir0p3a9cm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000859106529"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1163"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g/nRSumlEHHfIrONfz2nP9fM75RXfEFS+rpWf0WXB1w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 12 Jun 2026 13:26:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ir0p3a9cm"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.6ir0p3a9cm.css",
+      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3752"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 12 Jun 2026 13:26:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ir0p3a9cm"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.6ir0p3a9cm.css.gz",
+      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-6ir0p3a9cm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1163"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g/nRSumlEHHfIrONfz2nP9fM75RXfEFS+rpWf0WXB1w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 12 Jun 2026 13:26:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ir0p3a9cm"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-g/nRSumlEHHfIrONfz2nP9fM75RXfEFS+rpWf0WXB1w="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "/Users/dianabrosko/.nuget/packages/microsoft.aspnetcore.identity.ui/9.0.0/staticwebassets/css/site.css",
       "Selectors": [],
@@ -5391,12 +5552,12 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-ewb7d3jmmf.gz",
+      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-6ir0p3a9cm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000900900901"
+          "Quality": "0.000859106529"
         }
       ],
       "ResponseHeaders": [
@@ -5406,15 +5567,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1109"
+          "Value": "1163"
         },
         {
           "Name": "ETag",
-          "Value": "\"kaOYa+mqDiMt8c03dDCeODrcD9MzTEQb/7vcsaIyuj4=\""
+          "Value": "\"g/nRSumlEHHfIrONfz2nP9fM75RXfEFS+rpWf0WXB1w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 11 Jun 2026 19:26:30 GMT"
+          "Value": "Fri, 12 Jun 2026 13:26:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5434,13 +5595,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE=\""
+          "Value": "W/\"PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE="
+          "Value": "sha256-PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk="
         }
       ]
     },
@@ -5455,7 +5616,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3575"
+          "Value": "3752"
         },
         {
           "Name": "Content-Type",
@@ -5463,11 +5624,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE=\""
+          "Value": "\"PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 11 Jun 2026 19:26:30 GMT"
+          "Value": "Fri, 12 Jun 2026 13:26:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5477,13 +5638,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE="
+          "Value": "sha256-PhBsp+kcJuZCUITceFWyR3f9o5LAmEAFrqUsVVxBFJk="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-ewb7d3jmmf.gz",
+      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-6ir0p3a9cm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5492,7 +5653,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1109"
+          "Value": "1163"
         },
         {
           "Name": "Content-Type",
@@ -5500,11 +5661,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kaOYa+mqDiMt8c03dDCeODrcD9MzTEQb/7vcsaIyuj4=\""
+          "Value": "\"g/nRSumlEHHfIrONfz2nP9fM75RXfEFS+rpWf0WXB1w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 11 Jun 2026 19:26:30 GMT"
+          "Value": "Fri, 12 Jun 2026 13:26:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5522,168 +5683,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-kaOYa+mqDiMt8c03dDCeODrcD9MzTEQb/7vcsaIyuj4="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.ewb7d3jmmf.css",
-      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-ewb7d3jmmf.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000900900901"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1109"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kaOYa+mqDiMt8c03dDCeODrcD9MzTEQb/7vcsaIyuj4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 11 Jun 2026 19:26:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ewb7d3jmmf"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.ewb7d3jmmf.css",
-      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/wwwroot/css/site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3575"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 11 Jun 2026 19:26:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ewb7d3jmmf"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Av8j5FQweKnJwaVKFd+4iQEBVr6drMRG6lilcElwMBE="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.ewb7d3jmmf.css.gz",
-      "AssetFile": "/Users/dianabrosko/MVC_L2/Projekt/obj/Debug/net9.0/compressed/3ye3tm7ntj-ewb7d3jmmf.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1109"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kaOYa+mqDiMt8c03dDCeODrcD9MzTEQb/7vcsaIyuj4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 11 Jun 2026 19:26:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ewb7d3jmmf"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-kaOYa+mqDiMt8c03dDCeODrcD9MzTEQb/7vcsaIyuj4="
+          "Value": "sha256-g/nRSumlEHHfIrONfz2nP9fM75RXfEFS+rpWf0WXB1w="
         }
       ]
     },

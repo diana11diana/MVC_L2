@@ -1,0 +1,544 @@
+@model Projekt.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Panel Premium";
+
+    var hours = Model.TotalTrainingMinutes / 60;
+    var minutes = Model.TotalTrainingMinutes % 60;
+
+    var strengthPercent = Math.Min(Model.ProgressPercent + 20, 100);
+    var cardioPercent = Math.Min(Model.ProgressPercent + 10, 100);
+    var regularityPercent = Model.ProgressPercent;
+    var mobilityPercent = Math.Min(Model.ProgressPercent + 15, 100);
+}
+
+<div class="container py-5">
+
+    <div class="premium-hero mb-5">
+        <div>
+            <div class="premium-badge">👑 Konto Premium aktywne</div>
+            <h1>Twój Premium Fitness Coach</h1>
+            <p>
+                Otrzymujesz dostęp do inteligentnych rekomendacji, specjalnych planów treningowych
+                oraz rozszerzonych statystyk dopasowanych do Twojego realnego postępu.
+            </p>
+        </div>
+
+        <div class="premium-score">
+            <span>@Model.ProgressPercent%</span>
+            <small>ukończonego planu</small>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+
+        <div class="col-md-3">
+            <div class="premium-stat">
+                <div class="fs-1">📋</div>
+                <h3>@Model.UserExercisesCount</h3>
+                <p>ćwiczenia w planie</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="premium-stat">
+                <div class="fs-1">⏱️</div>
+                <h3>@hours h @minutes min</h3>
+                <p>łączny czas treningów</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="premium-stat">
+                <div class="fs-1">✅</div>
+                <h3>@Model.CompletedExercisesCount</h3>
+                <p>wykonane ćwiczenia</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="premium-stat">
+                <div class="fs-1">⏳</div>
+                <h3>@Model.ActiveExercisesCount</h3>
+                <p>do wykonania</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-6">
+            <div class="premium-card h-100">
+                <h3>🤖 Inteligentna rekomendacja dnia</h3>
+                <p class="text-muted">
+                    Rekomendacja jest dobierana na podstawie Twojego aktualnego postępu.
+                </p>
+
+                <div class="recommendation-box">
+                    @if (Model.ProgressPercent < 30)
+                    {
+                        <h4>Trening lekki i mobilizacyjny</h4>
+                        <p>Poziom: <strong>Łatwy</strong></p>
+                        <p>Czas: <strong>20 minut</strong></p>
+                        <p>Cel: spokojny powrót do aktywności i poprawa regularności.</p>
+                    }
+                    else if (Model.ProgressPercent < 70)
+                    {
+                        <h4>Trening siłowo-mobilizacyjny</h4>
+                        <p>Poziom: <strong>Średni</strong></p>
+                        <p>Czas: <strong>35 minut</strong></p>
+                        <p>Cel: poprawa siły, stabilizacji i kontroli ruchu.</p>
+                    }
+                    else
+                    {
+                        <h4>Trening intensywny Premium</h4>
+                        <p>Poziom: <strong>Trudny</strong></p>
+                        <p>Czas: <strong>45 minut</strong></p>
+                        <p>Cel: utrzymanie wysokiej formy i dalszy rozwój kondycji.</p>
+                    }
+                </div>
+
+                <a asp-controller="UserExercises"
+                   asp-action="Available"
+                   class="btn btn-primary w-100 mt-3">
+                    Pokaż pasujące ćwiczenia
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="premium-card h-100">
+                <h3>📊 Zaawansowana analiza</h3>
+
+                <div class="analysis-item">
+                    <span>Siła</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width:@strengthPercent%"></div>
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <span>Kondycja</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" style="width:@cardioPercent%"></div>
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <span>Regularność</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" style="width:@regularityPercent%"></div>
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <span>Mobilność</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" style="width:@mobilityPercent%"></div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-4 mb-0">
+                    Twoja analiza Premium bazuje na liczbie dodanych i wykonanych ćwiczeń.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="premium-plan mt-5">
+        <h2>🔥 Plan Premium na dziś</h2>
+
+        <div class="row g-4 mt-2">
+
+            <div class="col-md-3">
+                <div class="plan-step">
+                    <div class="step-number">1</div>
+                    <h5>Rozgrzewka</h5>
+                    <p>10 minut spokojnego przygotowania ciała.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="plan-step">
+                    <div class="step-number">2</div>
+                    <h5>Trening główny</h5>
+                    <p>Dopasuj ćwiczenia do aktualnego poziomu i celu.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="plan-step">
+                    <div class="step-number">3</div>
+                    <h5>Mobilność</h5>
+                    <p>Dodaj ćwiczenia rozciągające lub stabilizujące.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="plan-step">
+                    <div class="step-number">4</div>
+                    <h5>Podsumowanie</h5>
+                    <p>Oznacz ćwiczenia jako wykonane i obserwuj postęp.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="premium-ai-button" data-bs-toggle="modal" data-bs-target="#aiCoachModal">
+        🤖
+    </div>
+
+    <div class="modal fade" id="aiCoachModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content ai-chat-modal">
+
+                <div class="modal-header ai-chat-header">
+                    <div>
+                        <h5 class="modal-title">🤖 Premium AI Coach</h5>
+                        <small>Rozszerzona ankieta treningowa</small>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div id="chatBox" class="ai-chat-box"></div>
+
+                    <div id="answerBox" class="mt-3"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const questions = [
+        {
+            text: "Jak się dziś czujesz?",
+            key: "mood",
+            answers: ["Energetycznie", "Normalnie", "Zmęczona/y", "Sennie", "Zestresowana/y"]
+        },
+        {
+            text: "Jaki jest Twój główny cel na dziś?",
+            key: "goal",
+            answers: ["Siła", "Kondycja", "Rozciąganie", "Redukcja stresu", "Lekki ruch"]
+        },
+        {
+            text: "Ile czasu chcesz poświęcić na trening?",
+            key: "time",
+            answers: ["15 minut", "30 minut", "45 minut", "60 minut"]
+        },
+        {
+            text: "Jaki poziom intensywności wybierasz?",
+            key: "level",
+            answers: ["Łatwy", "Średni", "Trudny"]
+        },
+        {
+            text: "Czy masz dziś sprzęt treningowy?",
+            key: "equipment",
+            answers: ["Brak sprzętu", "Mata", "Hantle", "Guma oporowa", "Kettlebell"]
+        }
+    ];
+
+    let currentQuestion = 0;
+    let answers = {};
+
+    const chatBox = document.getElementById("chatBox");
+    const answerBox = document.getElementById("answerBox");
+
+    function addBotMessage(text) {
+        chatBox.innerHTML += `<div class="bot-message">${text}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function addUserMessage(text) {
+        chatBox.innerHTML += `<div class="user-message">${text}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showQuestion() {
+        answerBox.innerHTML = "";
+
+        if (currentQuestion >= questions.length) {
+            showResult();
+            return;
+        }
+
+        const q = questions[currentQuestion];
+
+        setTimeout(() => {
+            addBotMessage(q.text);
+
+            q.answers.forEach(answer => {
+                const btn = document.createElement("button");
+                btn.className = "btn btn-outline-primary btn-sm me-2 mb-2";
+                btn.innerText = answer;
+
+                btn.onclick = function () {
+                    answers[q.key] = answer;
+                    addUserMessage(answer);
+                    currentQuestion++;
+                    showQuestion();
+                };
+
+                answerBox.appendChild(btn);
+            });
+        }, 500);
+    }
+
+    function showResult() {
+        answerBox.innerHTML = "";
+
+        let category = "Mobilność";
+        let difficulty = answers.level || "Średni";
+
+        if (answers.goal === "Siła") category = "Siłowe";
+        if (answers.goal === "Kondycja") category = "Cardio";
+        if (answers.goal === "Rozciąganie") category = "Rozciąganie";
+        if (answers.goal === "Redukcja stresu") category = "Relaksacyjne";
+        if (answers.goal === "Lekki ruch") category = "Mobilność";
+
+        if (answers.mood === "Zmęczona/y" || answers.mood === "Sennie" || answers.mood === "Zestresowana/y") {
+            difficulty = "Łatwy";
+        }
+
+        addBotMessage(
+            `<strong>Twoja rekomendacja Premium:</strong><br>
+             Kategoria: <strong>${category}</strong><br>
+             Poziom: <strong>${difficulty}</strong><br>
+             Sprzęt: <strong>${answers.equipment}</strong><br>
+             Czas: <strong>${answers.time}</strong><br><br>
+             Proponuję trening dopasowany do Twojego samopoczucia i celu.`
+        );
+
+        answerBox.innerHTML = `
+            <a class="btn btn-success w-100"
+               href="/UserExercises/Available?category=${encodeURIComponent(category)}&difficulty=${encodeURIComponent(difficulty)}">
+               Pokaż rekomendowane ćwiczenia
+            </a>
+            <button class="btn btn-outline-secondary w-100 mt-2" onclick="restartAiChat()">
+               Zacznij od nowa
+            </button>
+        `;
+    }
+
+    function restartAiChat() {
+        currentQuestion = 0;
+        answers = {};
+        chatBox.innerHTML = "";
+        answerBox.innerHTML = "";
+        addBotMessage("Cześć! Jestem Twoim Premium AI Coachem. Pomogę dobrać trening na dziś.");
+        showQuestion();
+    }
+
+    document.getElementById("aiCoachModal").addEventListener("shown.bs.modal", function () {
+        if (chatBox.innerHTML.trim() === "") {
+            restartAiChat();
+        }
+    });
+</script>
+
+<style>
+    .premium-hero {
+        background: linear-gradient(135deg, #111827, #7c3aed, #2563eb);
+        color: white;
+        border-radius: 36px;
+        padding: 55px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 30px 70px rgba(15, 23, 42, .3);
+    }
+
+    .premium-badge {
+        display: inline-block;
+        background: rgba(255,255,255,.18);
+        border: 1px solid rgba(255,255,255,.3);
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-weight: 800;
+        margin-bottom: 18px;
+    }
+
+    .premium-hero h1 {
+        font-size: 52px;
+        font-weight: 900;
+    }
+
+    .premium-hero p {
+        font-size: 19px;
+        max-width: 700px;
+        color: #e0e7ff;
+    }
+
+    .premium-score {
+        background: rgba(255,255,255,.15);
+        border-radius: 28px;
+        padding: 30px;
+        text-align: center;
+        min-width: 180px;
+    }
+
+    .premium-score span {
+        font-size: 50px;
+        font-weight: 900;
+        display: block;
+    }
+
+    .premium-stat,
+    .premium-card,
+    .premium-plan,
+    .plan-step {
+        background: white;
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, .11);
+        border: 1px solid #e2e8f0;
+    }
+
+    .premium-stat {
+        text-align: center;
+        height: 100%;
+    }
+
+    .premium-stat h3 {
+        font-weight: 900;
+        color: #2563eb;
+    }
+
+    .premium-stat p {
+        color: #64748b;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .premium-card h3,
+    .premium-plan h2 {
+        font-weight: 900;
+        color: #0f172a;
+    }
+
+    .recommendation-box {
+        background: #f5f3ff;
+        border-left: 6px solid #7c3aed;
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .recommendation-box h4 {
+        font-weight: 900;
+        color: #6d28d9;
+    }
+
+    .analysis-item {
+        margin-bottom: 22px;
+    }
+
+    .analysis-item span {
+        font-weight: 800;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .progress {
+        height: 16px;
+        border-radius: 999px;
+    }
+
+    .step-number {
+        width: 46px;
+        height: 46px;
+        background: linear-gradient(135deg, #7c3aed, #2563eb);
+        color: white;
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .plan-step h5 {
+        font-weight: 900;
+    }
+
+    .premium-ai-button {
+        position: fixed;
+        right: 28px;
+        bottom: 28px;
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #7c3aed, #2563eb);
+        color: white;
+        font-size: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 45px rgba(37, 99, 235, .35);
+        cursor: pointer;
+        z-index: 2000;
+        transition: .25s;
+    }
+
+    .premium-ai-button:hover {
+        transform: translateY(-6px) scale(1.05);
+    }
+
+    .ai-chat-modal {
+        border-radius: 26px;
+        overflow: hidden;
+        border: none;
+    }
+
+    .ai-chat-header {
+        background: linear-gradient(135deg, #111827, #7c3aed);
+        color: white;
+    }
+
+    .ai-chat-box {
+        height: 360px;
+        overflow-y: auto;
+        background: #f8fafc;
+        border-radius: 18px;
+        padding: 18px;
+    }
+
+    .bot-message {
+        background: white;
+        border-radius: 18px 18px 18px 4px;
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        max-width: 85%;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, .08);
+    }
+
+    .user-message {
+        background: linear-gradient(135deg, #2563eb, #14b8a6);
+        color: white;
+        border-radius: 18px 18px 4px 18px;
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        margin-left: auto;
+        max-width: 85%;
+    }
+
+    @@media(max-width: 768px) {
+        .premium-hero {
+            flex-direction: column;
+            text-align: center;
+            gap: 25px;
+        }
+
+        .premium-hero h1 {
+            font-size: 36px;
+        }
+    }
+</style>
